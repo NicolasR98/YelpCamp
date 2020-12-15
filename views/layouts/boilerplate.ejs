@@ -13,9 +13,10 @@
     <title>Boilerplate!</title>
   </head>
   <body>
-    <h1>BEFORE</h1>
-    <%- body %>
-
+    <!-- Embedded Navbar -->
+    <%- include("../partials/navbar") %>
+    <!-- Main -->
+    <main class="container mt-4"><%- body %></main>
     <!-- Bootstrap 5 JS -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -27,6 +28,5 @@
       integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
       crossorigin="anonymous"
     ></script>
-    <h1>AFTER</h1>
   </body>
 </html>
