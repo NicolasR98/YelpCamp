@@ -1,35 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit campground</title>
-  </head>
-  <body>
-    <h1>Edit campground</h1>
-    <form
-      action="/campgrounds/<%= campground._id %>?_method=PUT "
-      method="post"
-    >
-      <label for="title">Campground Name:</label>
-      <input
-        type="text"
-        id="title"
-        placeholder="Campground Name"
-        name="campground[title]"
-        value="<%= campground.title %> "
-      />
+<% layout('layouts/boilerplate') %> 
+<h1>Edit campground</h1>
+<form action="/campgrounds/<%= campground._id %>?_method=PUT " method="post">
+  <label for="title">Campground Name:</label>
+  <input
+    type="text"
+    id="title"
+    placeholder="Campground Name"
+    name="campground[title]"
+    value="<%= campground.title %> "
+  />
 
-      <label for="location"></label>
-      <input
-        type="text"
-        id="location"
-        name="campground[location]"
-        placeholder="Campground Location"
-        value="<%= campground.location %> "
-      />
-      <button type="submit">Submit</button>
-    </form>
-    <a href="/campgrounds/<%= campground._id %> ">Go back to campground</a>
-  </body>
-</html>
+  <label for="location"></label>
+  <input
+    type="text"
+    id="location"
+    name="campground[location]"
+    placeholder="Campground Location"
+    value="<%= campground.location %> "
+  />
+  <button type="submit">Submit</button>
+</form>
+<a href="/campgrounds/<%= campground._id %> ">Go back to campground</a>

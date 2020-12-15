@@ -23,11 +23,11 @@ db.once("open", () => {
 });
 
 //--Configs
-app.set("view engine", "ejs");
+app.engine("ejs", ejsMate);   //Tell express to use ejsMate instead ejs
+app.set("view engine", "ejs");  
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-app.engine("ejs", ejsMate);
 
 //--Routes
 //Home
