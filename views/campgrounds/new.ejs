@@ -1,21 +1,43 @@
 <% layout('layouts/boilerplate') %>
-<h1>Add a new campground</h1>
-<form action="/campgrounds" method="post">
-  <label for="title">Campground Name:</label>
-  <input
-    type="text"
-    id="title"
-    placeholder="Campground Name"
-    name="campground[title]"
-  />
-
-  <label for="location"></label>
-  <input
-    type="text"
-    id="location"
-    name="campground[location]"
-    placeholder="Campground Location"
-  />
-  <button type="submit">Submit</button>
-</form>
-<a href="/campgrounds">Go to campgrounds index</a>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h1 class="text-center mb-3">New Campground</h1>
+      <form action="/campgrounds" method="post">
+        <!-- Title -->
+        <div class="mb-3">
+          <label for="title" class="form-label">Campground Name:</label>
+          <input type="text" id="title" placeholder="Campground Name" name="campground[title]" class="form-control" />
+        </div>
+        <!-- Location -->
+        <div class="mb-3">
+          <label for="location" class="form-label">Location:</label>
+          <input type="text" id="location" name="campground[location]" placeholder="Campground Location"
+            class="form-control" />
+        </div>
+        <!-- Image Url -->
+        <div class="mb-3">
+          <label for="image" class="form-label">Image Url:</label>
+          <input type="text" id="image" placeholder="Image url" name="campground[image]" class="form-control" />
+        </div>
+        <!-- Price -->
+        <div class="mb-3">
+          <label for="price" class="form-label">Price:</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text">$</span>
+            <input type="text" id="price" class="form-control" aria-label="price" name="campground[price]" placeholder="0.00">
+          </div>
+        </div>
+        <!-- Description -->
+        <div class="mb-3">
+          <label for="description" class="form-label">Description:</label>
+          <textarea type="text" id="description" placeholder="Description" name="campground[description]"
+            class="form-control">
+          </textarea>
+        </div>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+      </form>
+      <a href="/campgrounds">Go to campgrounds index</a>
+    </div>
+  </div>
