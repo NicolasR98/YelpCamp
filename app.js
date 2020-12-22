@@ -110,11 +110,13 @@ app.all("*", (req, res, next) => {
 
 //Handler
 app.use((err, req, res, next) => {
-  const { statusCode = 500, message = "Something Went Wrong" } = err;
-  res.status(statusCode).send(message);
+  const { statusCode = 500} = err;
+  if(!err.message) err.message = "Something Went Wrong"
+  res.status(statusCode).render("error", {err});
 });
 
 //--Server Listener
 app.listen(3000, () => {
   console.log("Server started at port 3000");
 });
+ 
