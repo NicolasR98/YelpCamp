@@ -2,22 +2,33 @@
   <div class="row">
     <div class="col-6 offset-3">
       <h1 class="text-center mb-3">Edit Campground</h1>
-      <form action="/campgrounds/<%= campground._id %>?_method=PUT " method="post">
+      <form action="/campgrounds/<%= campground._id %>?_method=PUT " method="post" novalidate class="validated-form">
         <!-- Title -->
         <div class="mb-3">
           <label for="title" class="form-label">Campground Name:</label>
-          <input type="text" id="title" placeholder="Campground Name" name="campground[title]" class="form-control" value="<%= campground.title %> "/>
+          <input type="text" id="title" placeholder="Campground Name" name="campground[title]" class="form-control"
+            value="<%= campground.title %> " required />
+          <div class="valid-feedback">
+            Looks good!
+          </div>
         </div>
         <!-- Location -->
         <div class="mb-3">
           <label for="location" class="form-label">Location:</label>
           <input type="text" id="location" name="campground[location]" placeholder="Campground Location"
-            class="form-control" value="<%= campground.location %> "/>
+            class="form-control" value="<%= campground.location %> " required />
+          <div class="valid-feedback">
+            Looks good!
+          </div>
         </div>
         <!-- Image Url -->
         <div class="mb-3">
           <label for="image" class="form-label">Image Url:</label>
-          <input type="text" id="image" placeholder="Image url" name="campground[image]" class="form-control" value="<%= campground.image %> "/>
+          <input type="text" id="image" placeholder="Image url" name="campground[image]" class="form-control"
+            value="<%= campground.image %> " required />
+          <div class="valid-feedback">
+            Looks good!
+          </div>
         </div>
         <!-- Price -->
         <div class="mb-3">
@@ -25,7 +36,10 @@
           <div class="input-group mb-3">
             <span class="input-group-text">$</span>
             <input type="text" id="price" class="form-control" aria-label="price" name="campground[price]"
-              placeholder="0.00" value="<%= campground.price %> ">
+              placeholder="0.00" value="<%= campground.price %> " required />
+            <div class="valid-feedback">
+              Looks good!
+            </div>
           </div>
         </div>
         <!-- Description -->
