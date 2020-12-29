@@ -144,6 +144,17 @@ app.post(
   })
 );
 
+//Destroy (reviews)
+app.delete(
+  "/campgrounds/:id/reviews/:reviewId",
+  catchAsync(async (req, res) => {
+    const { id, reviewId } = req.params;
+    await Campground.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
+    await Review.findByIdAndDelete(reviewId);
+    res.redirect(`/campgrounds/${id}`);
+  })
+);
+
 //--Error handling
 //404
 app.all("*", (req, res, next) => {
