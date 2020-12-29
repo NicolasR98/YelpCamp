@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %>
   <div class="col-6 offset-3">
     <div class="card">
-      <img src="<%= campground.image %> " class="card-img-top" alt="...">
+      <img src="<%= campground.image %> " class="card-img-top" alt="..." />
       <div class="card-body">
         <h5 class="card-title">
           <%= campground.title %>
@@ -22,24 +22,33 @@
           <button type="submit" class="btn btn-danger">Delete</button>
         </form>
       </div>
-      <div>
+      <!-- Review section -->
+      <div class="mb-3 mx-3">
         <h2>Leave a review</h2>
+        <!-- Review form -->
         <form action="/campgrounds/<%= campground._id %>/reviews " method="POST" novalidate class="mb-3 validated-form">
           <div class="mb-3">
             <label for="rating">Rating</label>
-            <input type="range" class="custom-range" name="review[rating]" id="rating" min="0" max="5" step="0.5">
+            <input type="range" class="custom-range" name="review[rating]" id="rating" min="0" max="5" step="0.5" />
             <label for="range"></label>
             <div class="mb-3">
               <label for="body" class="form-label">Review</label>
               <textarea name="review[body]" id="body" cols="30" rows="4" class="form-control" placeholder="Review"
                 required></textarea>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
+              <div class="valid-feedback">Looks good!</div>
             </div>
           </div>
           <button type="submit" class="btn btn-success">Submit</button>
         </form>
+        <!-- Review display -->
+        <% for(let review of campground.reviews) { %>
+          <div class="mb-3">
+            <p>Rating: <%= review.rating %>
+            </p>
+            <p>Review: <%= review.body %>
+            </p>
+          </div>
+          <% } %>
       </div>
     </div>
   </div>
