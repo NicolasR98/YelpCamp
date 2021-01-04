@@ -43,6 +43,7 @@ router.post(
       throw new ExpressError("Invalid Campground Data", 400);
     const campground = new Campground(req.body.campground);
     await campground.save();
+    req.flash("success", "Successfully created a campground");
     res.redirect(`/campgrounds/${campground._id}`);
   })
 );
@@ -76,6 +77,7 @@ router.put(
     const campground = await Campground.findByIdAndUpdate(id, {
       ...req.body.campground,
     });
+    req.flash("success", "Campground updated");
     res.redirect(`/campgrounds/${campground._id}`);
   })
 );
