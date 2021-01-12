@@ -15,8 +15,11 @@ router.post(
       const { email, username, password } = req.body;
       const user = new User({ email, username });
       const registeredUser = await User.register(user, password);
-      req.flash("success", "Welcome to Yelpcamp");
-      res.redirect("/campgrounds");
+      req.login(registeredUser, (err) => {
+        if (err) return next(err);
+        req.flash("success", "Welcome to Yelpcamp");
+        res.redirect("/campgrounds");
+      });
     } catch (err) {
       req.flash("error", err.message);
       res.redirect("/register");
@@ -35,10 +38,10 @@ router.post(
     failureRedirect: "/login",
   }),
   (req, res) => {
-    const { username } = req.body;
+    const username = req.user.username;
     req.flash("success", `Welcome back ${username}!`);
-    res.redirect("/campgrounds");
-    console.log(req.body);
+    const redirectUrl = req.session.returnTo || "/campgrounds";
+    res.redirect(redirectUrl);
   }
 );
 
