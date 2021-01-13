@@ -11,6 +11,7 @@ const Campground = require("../models/campgrounds");
 
 //Middleware funcs
 const { isLoggedIn, isAuthor, validateCampground } = require("../middleware");
+const { populate } = require("../models/campgrounds");
 
 //--Routes
 //Index
@@ -46,7 +47,12 @@ router.get(
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const campground = await Campground.findById(id)
-      .populate("reviews")
+      .populate({
+        path: "reviews",
+        populate: {
+          path: "author",
+        },
+      })
       .populate("author");
     if (!campground) {
       req.flash("error", "Campground not found");
