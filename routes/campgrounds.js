@@ -12,36 +12,29 @@ const campgrounds = require("../controllers/campgrounds");
 const { isLoggedIn, isAuthor, validateCampground } = require("../middleware");
 
 //--Routes
-//Index
-router.get("/", catchAsync(campgrounds.index));
+router.route("/")
+  //Index
+  .get(catchAsync(campgrounds.index))
+  //Create
+  .post(isLoggedIn, validateCampground, catchAsync(campgrounds.createCamp));
 
-//New
+//New  
 router.get("/new", isLoggedIn, campgrounds.newCamp);
 
-//Create
-router.post(
-  "/",
-  isLoggedIn,
-  validateCampground,
-  catchAsync(campgrounds.createCamp)
-);
-
-//Show
-router.get("/:id", catchAsync(campgrounds.showCamp));
+router.route("/:id")
+  //Show
+  .get(catchAsync(campgrounds.showCamp))
+  //Update
+  .put(
+    isLoggedIn,
+    isAuthor,
+    validateCampground,
+    catchAsync(campgrounds.updateCamp)
+  )
+  //Delete
+  .delete(isLoggedIn, isAuthor, catchAsync(campgrounds.deleteCamp));
 
 //Edit
 router.get("/:id/edit", isLoggedIn, isAuthor, catchAsync(campgrounds.editCamp));
-
-//Update
-router.put(
-  "/:id",
-  isLoggedIn,
-  isAuthor,
-  validateCampground,
-  catchAsync(campgrounds.updateCamp)
-);
-
-//Destroy
-router.delete("/:id", isLoggedIn, isAuthor, catchAsync(campgrounds.deleteCamp));
 
 module.exports = router;

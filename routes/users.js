@@ -10,24 +10,23 @@ const catchAsync = require("../utils/catchAsync");
 const users = require("../controllers/users");
 
 //--Routes
-//New (user)
-router.get("/register", users.newUser);
+router.route("/register")
+  //New (user)
+  .get(users.newUser)
+  //Create (User)
+  .post(catchAsync(users.createUser));
 
-//Create (User)
-router.post("/register", catchAsync(users.createUser));
-
-//Login form
-router.get("/login", users.loginUserForm);
-
-//Login logic
-router.post(
-  "/login",
-  passport.authenticate("local", {
-    failureFlash: true,
-    failureRedirect: "/login",
-  }),
-  users.loginUser
-);
+router.route("/login")
+  //Login form
+  .get(users.loginUserForm)
+  //Login logic
+  .post(
+    passport.authenticate("local", {
+      failureFlash: true,
+      failureRedirect: "/login",
+    }),
+    users.loginUser
+  );
 
 //Logout
 router.get("/logout", users.logoutUser);
