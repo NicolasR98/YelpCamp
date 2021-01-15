@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 //--Packages / Modules
 const express = require("express");
 const app = express();
@@ -69,7 +73,6 @@ app.use((req, res, next) => {
   res.locals.error = req.flash("error");
   next();
 });
-
 
 //-- Router Routes
 app.use("/campgrounds", campgroundsRoutes);
