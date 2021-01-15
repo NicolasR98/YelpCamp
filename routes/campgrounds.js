@@ -21,10 +21,12 @@ router
   .get(catchAsync(campgrounds.index))
   //Create
   // .post(isLoggedIn, validateCampground, catchAsync(campgrounds.createCamp));
-  .post(upload.array("image"), (req, res) => {
-    res.send("It worked!");
-    console.log(req.body, req.files);
-  });
+  .post(
+    isLoggedIn,
+    upload.array("image"),
+    validateCampground,
+    catchAsync(campgrounds.createCamp)
+  );
 
 //New
 router.get("/new", isLoggedIn, campgrounds.newCamp);
