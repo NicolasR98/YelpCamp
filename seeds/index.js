@@ -35,7 +35,18 @@ const seedDB = async () => {
       author: "5ff8c379d6835e1b286ebde8",
       location: `${cities[random1000].city}, ${cities[random1000].state}`,
       title: `${sample(descriptors)} ${sample(places)}`,
-      image: "https://source.unsplash.com/1600x900/?camping",
+      images: [
+        {
+          url:
+            "https://res.cloudinary.com/dlpp6b0kt/image/upload/v1610721551/YelpCamp/fk0xvghjaocr0pvvaurt.jpg",
+          filename: "YelpCamp/fk0xvghjaocr0pvvaurt",
+        },
+        {
+          url:
+            "https://res.cloudinary.com/dlpp6b0kt/image/upload/v1610721552/YelpCamp/s2ll8claeyhagrncviv1.jpg",
+          filename: "YelpCamp/s2ll8claeyhagrncviv1",
+        },
+      ],
       description: "A beatiful place!",
       price,
     });
