@@ -22,14 +22,6 @@
             Looks good!
           </div>
         </div>
-        <!-- Image File -->
-        <div class="mb-3">
-          <label for="image" class="form-label">Add images</label>
-          <input type="file" id="image" name="image" multiple/>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-        </div>
         <!-- Price -->
         <div class="mb-3">
           <label for="price" class="form-label">Price:</label>
@@ -50,9 +42,19 @@
             <%= campground.description %>
           </textarea>
         </div>
+        <!-- Image File -->
         <div class="mb-3">
-          <button type="submit" class="btn btn-info">Submit</button>
-        </div>
+          <label for="">Upload Images:</label>
+          <div class="form-file custom-file">
+            <input type="file" class="form-file-input" id="image" name="image" multiple />
+            <label for="image" class="form-file-label">
+              <span class="form-file-text custom-file-label">Choose images(s)</span>
+              <span class="form-file-button">Browse</span>
+            </label>
+          </div>
+          <div class="my-3">
+            <button type="submit" class="btn btn-info">Submit</button>
+          </div>
       </form>
       <a href="/campgrounds/<%= campground._id %> ">Go back to campground</a>
     </div>
