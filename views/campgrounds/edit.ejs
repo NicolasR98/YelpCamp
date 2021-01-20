@@ -52,9 +52,19 @@
               <span class="form-file-button">Browse</span>
             </label>
           </div>
-          <div class="my-3">
-            <button type="submit" class="btn btn-info">Submit</button>
-          </div>
+        </div>
+        <div class="mb-3">
+          <% campground.images.forEach((img, i)=>{ %>
+            <img src="<%=img.url%>" class="img-thumbnail" alt="">
+            <div class="form-check-inline">
+              <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+            </div>
+            <label for="image-<%=i%>">Delete?</label>
+            <% }) %>
+        </div>
+        <div class="my-3">
+          <button type="submit" class="btn btn-info">Submit</button>
+        </div>
       </form>
       <a href="/campgrounds/<%= campground._id %> ">Go back to campground</a>
     </div>
