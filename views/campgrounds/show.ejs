@@ -1,8 +1,10 @@
 <% layout('layouts/boilerplate') %>
   <link rel="stylesheet" type="text/css" href="/stylesheets/stars.css" />
+
   <div class="row">
     <!-- Campground Display -->
     <div class="col-6">
+      <div id='map' style='width: 400px; height: 300px;'></div>
       <div class="card mb-3">
         <div id="campgroundCarouser" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
@@ -104,3 +106,9 @@
               <% } %>
         </div>
     </div>
+
+<script>
+      const mbxToken = '<%-process.env.MAPBOX_TOKEN%>';
+      const campGeometry = <%- JSON.stringify(campground.geometry) %>;
+</script>
+<script src="/scripts/showPageMap.js"></script>
