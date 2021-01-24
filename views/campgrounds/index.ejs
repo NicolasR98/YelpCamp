@@ -1,4 +1,5 @@
 <% layout('layouts/boilerplate') %> 
+<div id="map" style="width: 100%; height: 500px;"></div>
 <h1>YelpCamp: All Campgrounds</h1>
 <a href="/campgrounds/new">Add a new campground</a>
 
@@ -25,4 +26,10 @@
       </div>
     </div>
   <% } %>
+  
+  
+<script>
+    const mbxToken = '<%-process.env.MAPBOX_TOKEN%>';
+</script>
+<script src="/scripts/clusterMap.js"></script>
 
